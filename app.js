@@ -13,7 +13,7 @@ function exibePopulares() {
             `
             <div class="col-xl-3 col-md-6 col-lg-6 col-sm-6">
             <div class="card" style="width: 18rem;">
-                <img src="imgs/${populares.poster_path}" class="card-img-top" alt="...">
+                <img src="${populares.poster_path}" class="card-img-top">
                 <div class="card-body">
                     <p class="card-text1"><b>${populares.title}</b> <br> Release date: ${populares.release_date}<br> Vote count: ${populares.vote_count}  - Rate: ${populares.vote_average}</b></p>
                     <a href="" id="btn-populares" class="btn btn-primary">Detalhes</a>
