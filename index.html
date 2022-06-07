@@ -30,7 +30,7 @@
                 </ul>
 
                 <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-                    <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
+                    <input id="pesquisa" type="search" class="form-control" placeholder="Search..." aria-label="Search">
                 </form>
 
                 <div class="dropdown text-end">
@@ -48,7 +48,7 @@
             <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
 
 
-                <div class="carousel-inner">
+                <div id="carousel" class="carousel-inner">
                     <div class="carousel-item active">
                         <div class="row">
                             <div class="col-xl-6 col-md-12 col-lg-12">
@@ -164,7 +164,7 @@
         <section class="container-fluid main2">
             <div class="row">
                 <div class="col-9">
-                    <h1 class="titulo2">Em destaque</h1>
+                    <h1 class="titulo2">Filmes populares</h1>
                 </div>
                 <div id="categoriasmain2" class="col-3">
                     <select class="form-select" aria-label="Default select example">
@@ -175,15 +175,14 @@
           </select>
                 </div>
             </div>
-            <div class="container-fluid d-flex flex-wrap cards">
+            <div id="Populares" class="container-fluid d-flex flex-wrap cards">
                 <div class="row">
                     <div class="col-xl-3 col-md-6 col-lg-6 col-sm-6">
                         <div class="card" style="width: 18rem;">
                             <img src="imgs/ossupeitos.jpg" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <p class="card-text1"><b>Os suspeitos - 2013 - Crime/Suspense</b></p>
-                                <a href="https://www.google.com/search?q=os+suspeitos&sxsrf=APq-WBt1oJZcqftG_GQQq7HWA59NK9eoCw%3A1649982229036&ei=FbtYYrz6Ae_E5OUP0-i74As&ved=0ahUKEwj82Jbl5pT3AhVvIrkGHVP0DrwQ4dUDCA8&uact=5&oq=os+suspeitos&gs_lcp=Cgdnd3Mtd2l6EAM6BAgjECc6DgguEIAEELEDEMcBENEDOgsIABCABBCxAxCDAToICAAQgAQQsQM6EQguEIAEELEDEMcBEKMCENQCOggIABCxAxCDAToFCAAQgAQ6CAguELEDEIMBOgQILhBDOgsILhCABBCxAxCDAToICC4QgAQQsQM6CwguEIAEELEDENQCOgUILhCABDoICC4QgAQQ1AI6BwguENQCEEM6BAgAEAM6CwgAELEDEIMBEMkDOgcIABAKEMsBOgUIABDLAUoECEEYAEoECEYYAFAAWOwPYLUQaAFwAHgAgAGOAYgBmAySAQQwLjEymAEAoAEBwAEB&sclient=gws-wiz"
-                                    class="btn btn-primary">Visitar</a>
+                                <a href="" id="btn-populares" class="btn btn-primary">Detalhes</a>
                             </div>
                         </div>
                     </div>
@@ -193,7 +192,7 @@
                             <img src="imgs/batman.jpg" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <p class="card-text"><b>Batman: O cavaleiro das trevas - 2008 - Ação/Aventura</b></p>
-                                <a href="https://www.google.com/search?q=batman+cavaleiro+das+trevas&oq=batman+cavale&aqs=edge.0.0i433i512j0i512j69i57j0i512l6.6595j0j9&sourceid=chrome&ie=UTF-8" class="btn btn-primary">Visitar</a>
+                                <a href="https://www.google.com/search?q=batman+cavaleiro+das+trevas&oq=batman+cavale&aqs=edge.0.0i433i512j0i512j69i57j0i512l6.6595j0j9&sourceid=chrome&ie=UTF-8" class="btn btn-primary">Detalhes</a>
                             </div>
                         </div>
                     </div>
@@ -202,7 +201,7 @@
                             <img src="imgs/detonaralph.jpg" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <p class="card-text"><b>Detona Ralph - 2012 - Comédia/Infantil</b></p>
-                                <a href="https://www.google.com/search?q=detona+ralph&source=lmns&bih=905&biw=1263&hl=pt-BR&sa=X&ved=2ahUKEwja48G714z3AhVdMLkGHTX-DrgQ_AUoAHoECAEQAA" class="btn btn-primary">Visitar</a>
+                                <a href="https://www.google.com/search?q=detona+ralph&source=lmns&bih=905&biw=1263&hl=pt-BR&sa=X&ved=2ahUKEwja48G714z3AhVdMLkGHTX-DrgQ_AUoAHoECAEQAA" class="btn btn-primary">Detalhes</a>
                             </div>
                         </div>
                     </div>
@@ -211,7 +210,7 @@
                             <img src="imgs/uma aventura lego.jpg" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <p class="card-text"><b>Uma aventura LEGO - 2014 - Comédia/Infantil</b></p>
-                                <a href="https://www.google.com/search?q=uma+aventura+elgo&source=lmns&bih=905&biw=1280&hl=pt-BR&sa=X&ved=2ahUKEwj61_ze14z3AhXGNrkGHW2GDFMQ_AUoAHoECAEQAA" class="btn btn-primary">Visitar</a>
+                                <a href="https://www.google.com/search?q=uma+aventura+elgo&source=lmns&bih=905&biw=1280&hl=pt-BR&sa=X&ved=2ahUKEwj61_ze14z3AhXGNrkGHW2GDFMQ_AUoAHoECAEQAA" class="btn btn-primary">Detalhes</a>
                             </div>
                         </div>
                     </div>
@@ -441,6 +440,7 @@
         </footer>
     </div>
 
+    <script src="app.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 
