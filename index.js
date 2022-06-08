@@ -5,7 +5,7 @@ function exibePopulares() {
     let texto = " ";
 
     let dados = JSON.parse(this.responseText);
-    for (i = 0; i < 4; i++) {
+    for (i = 0; i < dados.results.length; i++) {
         let populares = dados.results[i];
 
         texto =
@@ -16,7 +16,7 @@ function exibePopulares() {
                 <img src="https://image.tmdb.org/t/p/w500/${populares.poster_path}" class="card-img-top">
                 <div class="card-body">
                     <p class="card-text1"><b>${populares.title}</b> <br> <b>Data de lançamento:</b> ${populares.release_date}<br> <b>Nº de votos:</b> ${populares.vote_count} - <b>Avaliação:</b> ${populares.vote_average}</p>
-                    <a href="" id="btn-populares" class="btn btn-primary">Detalhes</a>
+                    <a href="detalhes.html" id="btn-populares" class="btn btn-primary">Detalhes</a>
                 </div>
             </div>
         </div>`;
