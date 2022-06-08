@@ -12,8 +12,8 @@ function exibeDetalhes() {
             texto +
             `
        
-                <div class="col-xl-6 col-md-6 col-lg-6 col-sm-6">
-                    <div class="card mb-3" style="max-width: 670px;">
+                <div class="col-xl-6 col-md-12 col-lg-8 col-sm-12">
+                    <div class="card mb-3" style="max-width: 650px;">
                         <div class="row">
                             <div class="">
                                 <img src="https://image.tmdb.org/t/p/w500/${detalhes.backdrop_path}" class="img-fluid rounded-start" alt="...">
