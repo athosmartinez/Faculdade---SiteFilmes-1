@@ -11,21 +11,33 @@ function exibeDetalhes() {
         texto =
             texto +
             `
-            <div class="col-xl-3 col-md-6 col-lg-6 col-sm-6">
-            <div class="card" style="width: 18rem;">
-                <img src="https://image.tmdb.org/t/p/w500/${detalhes.poster_path}" class="card-img-top">
-                <div class="card-body">
-                    <p class="card-text1"><b>${detalhes.title}</b> <br> <b>Data de lançamento:</b> ${detalhes.release_date}<br> <b>Nº de votos:</b> ${detalhes.vote_count} - <b>Avaliação:</b> ${detalhes.vote_average} - </p>
-                    <a href="detalhes.html" id="btn-populares" class="btn btn-primary">Detalhes</a>
+       
+                <div class="col-xl-6 col-md-6 col-lg-6 col-sm-6">
+                    <div class="card mb-3" style="max-width: 670px;">
+                        <div class="row">
+                            <div class="">
+                                <img src="https://image.tmdb.org/t/p/w500/${detalhes.backdrop_path}" class="img-fluid rounded-start" alt="...">
+                            </div>
+                            <div class="">
+                                <div class="card-body">
+                                    <h5 class="card-title">${detalhes.title}</h5>
+                                    <p class="card-text"><b>Sinopse:</b> ${detalhes.overview}</p>
+                                    <p><b>Popularidade:</b> ${detalhes.popularity}</p>
+                                    <p><b>Nº de votos:</b> ${detalhes.vote_count} - <b>Avaliação:</b> ${detalhes.vote_average}</p>
+                                    <p class="card-text"><small class="text-muted">Data lançamento: ${detalhes.release_date}</small></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>`;
+        </div>
+        
+            `;
     }
 
     divDetalhes.innerHTML = texto;
 }
-
-
 
 let xhr = new XMLHttpRequest();
 xhr.onload = exibeDetalhes;
