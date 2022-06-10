@@ -25,6 +25,7 @@ function exibeDetalhes() {
                                     <p><b>Popularidade:</b> ${detalhes.popularity}</p>
                                     <p><b>Nº de votos:</b> ${detalhes.vote_count} - <b>Avaliação:</b> ${detalhes.vote_average}</p>
                                     <p class="card-text"><small class="text-muted">Data lançamento: ${detalhes.release_date}</small></p>
+                                    <a href="detalhes+.html" id="btn-populares" class="btn btn-primary">Detalhes</a>
                                 </div>
                             </div>
                         </div>
