@@ -40,7 +40,7 @@ let xhr = new XMLHttpRequest();
 xhr.onload = exibeDetalhesP;
 xhr.open(
     "GET",
-    `https://api.themoviedb.org/3/movie/${idMovie}?api_key=${API_KEY}`
+    `https://api.themoviedb.org/3/movie/${idMovie}?api_key=${API_KEY}&language=pt-BR`
 );
 xhr.send();
 

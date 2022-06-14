@@ -1,5 +1,76 @@
 const API_KEY = "4fcc4590f648e11f5b9030e8b5746e6e";
 
+function exibeCarousel() {
+    let divCarousel = document.getElementById("carouselExampleIndicators");
+    let texto = ` <section class="main1">
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel"> `;
+
+    let dados = JSON.parse(this.responseText);
+    console.log(dados);
+    for (i = 0; i < 4; i++) {
+        let carousel = dados.results[i];
+        console.log(carousel);
+
+        texto =
+            texto +
+            `<div id="carousel" class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="row">
+                    <div class="col-xl-6 col-md-12 col-lg-12">
+                        <iframe class="videomain1" width="830" height="330" src="https://www.youtube.com/embed/YA_T5kar83Q" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+
+                    <div id="textomain1" class="col-xl-6 col-md-12 col-lg-12">
+                        <h2>As aventuras de PI</h2>
+                        <div class="textoPI">
+                            <p><b>Sinopse:</b> Pi e sua família decidem ir para o Canadá depois de fechar o zoológico da família. A embarcação deles naufraga, e o jovem sobrevive junto com alguns animais, incluindo um temível tigre de Bengala, com
+                                o qual desenvolve uma ligação.</p>
+                            <p><b>Diretor:</b> Ang Lee | <b>Roteirista:</b> Yann Martel | <b>Estreia:</b> 2012</p>
+
+                            <p><b>Elenco:</b> Suraj Sharma | Irrfan Khan | Tabu | Gautam Belur</p>
+                            <p><b> Se você já assistei deixe sua avaliação:</b></p>
+                        </div>
+                        <div class="estrelas">
+                            <input type="radio" id="cm_star-empty" name="fb" value="" checked/>
+                            <label for="cm_star-1"><i class="fa"></i></label>
+                            <input type="radio" id="cm_star-1" name="fb" value="1" />
+                            <label for="cm_star-2"><i class="fa"></i></label>
+                            <input type="radio" id="cm_star-2" name="fb" value="2" />
+                            <label for="cm_star-3"><i class="fa"></i></label>
+                            <input type="radio" id="cm_star-3" name="fb" value="3" />
+                            <label for="cm_star-4"><i class="fa"></i></label>
+                            <input type="radio" id="cm_star-4" name="fb" value="4" />
+                            <label for="cm_star-5"><i class="fa"></i></label>
+                            <input type="radio" id="cm_star-5" name="fb" value="5" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+           `;
+    }
+    texto += ` <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <span class=" rounded-pill btn-dark danger carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <span class=" rounded-pill btn-dark danger carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+</button> 
+    </div>
+        </section> `
+    divCarousel.innerHTML = texto;
+}
+const xhrCar = new XMLHttpRequest();
+xhrCar.onload = exibeCarousel;
+xhrCar.open(
+    "GET",
+    `https://api.themoviedb.org/3/movie/550/videos?api_key=${API_KEY}&language=pt-BR`
+);
+xhrCar.send();
+
+document.addEventListener("load", exibeCarousel);
+//DIVISAO
 function exibePopulares() {
     let divPopulares = document.getElementById("Populares");
     let texto = " ";
@@ -29,15 +100,95 @@ const xhrPop = new XMLHttpRequest();
 xhrPop.onload = exibePopulares;
 xhrPop.open(
     "GET",
-    `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`
+    `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=pt-BR&page=1`
 );
 xhrPop.send();
 
 document.addEventListener("load", exibePopulares);
 
+//DIVISAO
+
+const genres = [
+    {
+      "id": 28,
+      "name": "Action"
+    },
+    {
+      "id": 12,
+      "name": "Adventure"
+    },
+    {
+      "id": 16,
+      "name": "Animation"
+    },
+    {
+      "id": 35,
+      "name": "Comedy"
+    },
+    {
+      "id": 80,
+      "name": "Crime"
+    },
+    {
+      "id": 99,
+      "name": "Documentary"
+    },
+    {
+      "id": 18,
+      "name": "Drama"
+    },
+    {
+      "id": 10751,
+      "name": "Family"
+    },
+    {
+      "id": 14,
+      "name": "Fantasy"
+    },
+    {
+      "id": 36,
+      "name": "History"
+    },
+    {
+      "id": 27,
+      "name": "Horror"
+    },
+    {
+      "id": 10402,
+      "name": "Music"
+    },
+    {
+      "id": 9648,
+      "name": "Mystery"
+    },
+    {
+      "id": 10749,
+      "name": "Romance"
+    },
+    {
+      "id": 878,
+      "name": "Science Fiction"
+    },
+    {
+      "id": 10770,
+      "name": "TV Movie"
+    },
+    {
+      "id": 53,
+      "name": "Thriller"
+    },
+    {
+      "id": 10752,
+      "name": "War"
+    },
+    {
+      "id": 37,
+      "name": "Western"
+    }
+  ]
 
 function exibeCategorias() {
-    let divCategorias = document.getElementById("Categorias");
+    let divCategorias = document.getElementById("categoriasmain2");
     let texto = `<select id="Categorias" class="form-select" aria-label="Default select example">
     <option selected>CATEGORIAS: Todos</option>`;
 
@@ -63,103 +214,46 @@ function exibeCategorias() {
 const xhrCat = new XMLHttpRequest();
 xhrCat.onload = exibeCategorias;
 xhrCat.open(
-    "GET", `https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}&language=en-US`
+    "GET", `https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}&language=pt-BR`
 );
 xhrCat.send();
 
 document.addEventListener("load", exibeCategorias);
-
-// function exibeNoticias() {
-//     let divNoticias = document.getElementById("Noticia");
-//     let texto = ` <div id="Noticias" class="container-fluid">
-//     <div class="row">
-//         <div class="col-12 col-xl-8">
-//             <h1 class="titulo5">Novidades</h1>`;
-
-//     let dados = JSON.parse(this.responseText);
-
-//     console.log(dados);
-
-//     for (i = 0; i < dados.genres.length; i++) {
-//         let noticias = dados.genres[i];
-
-//         console.log(noticias);
-
-//         texto =
-//             texto +
-//             `
-//             <div class="d-md-flex">
-//             <img class="imagensfinais" src="imgs/noticiabatman.jpg">
-//             <a href="https://www.omelete.com.br/batman/danny-devito-collin-farrell-pinguim" style="text-decoration:none">
-//                 <h1 class="titulontfinal"> DeVito elogia Pinguim de Colin Farrell, mas prefere Batman de Tim Burton</h1>
-//                 <p class="paragrafontfinal">O astro Danny DeVito elogiou a atuação de Colin Farrell como Pinguim no Batman de Matt Reeves, mas disse que ainda prefere o filme de Tim Burton, Batman: O Retorno. "Sim eu fiz. Achei que Colin fez um ótimo trabalho”, disse
-//                     DeVito ao The Wrap. “Certamente um meio diferente. Eu acho que foi um Batman mais ousado, sério e gângster. Você tira o chapéu para qualquer um que fica sentado na cadeira de maquiagem por tanto tempo. Eu fiz isso com
-//                     o Pinguim e adorei.”
-//                     <br>
-//                     <br>
-//                     <button type="button" class="rounded-pill btn btn-primary btn-sm">Filmes</button>
-//                     <button type="button" class="rounded-pill btn btn-success btn-sm">Batman</button>
-//                     <button type="button" class="rounded-pill btn btn-danger btn-sm">Elogio</button>
-//                 </p>
-
-//             </a>
-
-//         </div>
-//             `;
-//     }
-//     texto += ` `
-//     divNoticias.innerHTML = texto;
-// }
-// const xhrNot = new XMLHttpRequest();
-// xhrNot.onload = exibeNoticias;
-// xhrNot.open(
-//     "GET",
-//     `
-//     https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}&language=en-US`
-// );
-// xhrNot.send();
-
-// document.addEventListener("load", exibeNoticias);
-
+//DIVISAO
 function exibeAvaliacoes() {
     let divAvaliacoes = document.getElementById("Avaliacoes");
-    let texto = `<div id="Avaliacoes" class="container-fluid d-flex flex-wrap cards">
-    <div class="card-deck">
-        <div class="row">
-            <div class="col-xl-4 col-md-6 col-lg-6 col-sm-6"> `;
+    let texto = `<div class="row">
+             `;
 
     let dados = JSON.parse(this.responseText);
 
     console.log(dados);
 
-    for (i = 0; i < dados.results.length; i++) {
+    for (i = 0; i < 3; i++) {
         let avaliacoes = dados.results[i];
 
         texto =
             texto +
+            
             `
+            
+            <div class="col-xl-4 col-md-6 col-lg-6 col-sm-6">
             <div class="card">
-            <img class="card-img-top2" src="imgs/unnamed.png" alt="Imagem de capa do card">
-            <div class="card-body">
-                <h5 class="card-title">${avaliacoes.author}</h5>
-                <div class="overflow-auto">
-                <p class="card-text">${avaliacoes.content}</p>
-                </div>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-emoji-frown" viewBox="0 0 16 16">
-                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                <path d="M4.285 12.433a.5.5 0 0 0 .683-.183A3.498 3.498 0 0 1 8 10.5c1.295 0 2.426.703 3.032 1.75a.5.5 0 0 0 .866-.5A4.498 4.498 0 0 0 8 9.5a4.5 4.5 0 0 0-3.898 2.25.5.5 0 0 0 .183.683zM7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5zm4 0c0 .828-.448 1.5-1 1.5s-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5z"/>
-              </svg>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-emoji-neutral" viewBox="0 0 16 16">
-                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                <path d="M4 10.5a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 0-1h-7a.5.5 0 0 0-.5.5zm3-4C7 5.672 6.552 5 6 5s-1 .672-1 1.5S5.448 8 6 8s1-.672 1-1.5zm4 0c0-.828-.448-1.5-1-1.5s-1 .672-1 1.5S9.448 8 10 8s1-.672 1-1.5z"/>
-              </svg>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-emoji-laughing-fill" viewBox="0 0 16 16">
-                <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zM7 6.5c0 .501-.164.396-.415.235C6.42 6.629 6.218 6.5 6 6.5c-.218 0-.42.13-.585.235C5.164 6.896 5 7 5 6.5 5 5.672 5.448 5 6 5s1 .672 1 1.5zm5.331 3a1 1 0 0 1 0 1A4.998 4.998 0 0 1 8 13a4.998 4.998 0 0 1-4.33-2.5A1 1 0 0 1 4.535 9h6.93a1 1 0 0 1 .866.5zm-1.746-2.765C10.42 6.629 10.218 6.5 10 6.5c-.218 0-.42.13-.585.235C9.164 6.896 9 7 9 6.5c0-.828.448-1.5 1-1.5s1 .672 1 1.5c0 .501-.164.396-.415.235z"/>
-              </svg>
+                <img class="card-img-top2" src="https://image.tmdb.org/t/p/w500/${avaliacoes.avatar_path}" alt="Imagem de capa do card">
+                <div class="card-body">
+                    <h5 class="card-title">${avaliacoes.author}</h5>
+                    <div class="overflow-auto">
+                    <a href="${avaliacoes.url}" style="text-decoration:none">
+                    <p class="card-text">${avaliacoes.content}</p>
+                    </a>
+                   </div>
+                   
 
-                <p class="card-text"><small class="text-muted"><b>Sobre: </b>Batman: O cavaleiro das trevas - Postado em 02/03/2022</small></p>
+                    <p class="card-text"><small class="text-muted"><b></b>Posted: ${avaliacoes.created_at}</small></p>
+                </div>
             </div>
         </div>
+        
             `;
     }
     texto += ` `
@@ -174,3 +268,42 @@ xhrAva.open(
 xhrAva.send();
 
 document.addEventListener("load", exibeAvaliacoes);
+
+//DIVISAO
+
+function exibeEntrevistas() {
+    let divEntrevistas = document.getElementById("entrevistas");
+    let texto = `<div class="row"> `;
+
+    let dados = JSON.parse(this.responseText);
+
+    console.log(dados);
+
+    for (i = 0; i < 3; i++) {
+        let entrevistas = dados.results[i];
+
+        texto =
+            texto +
+            `
+            
+            <div class="col-xl-8 col-md-12 col-xxl-4">
+                <iframe class="videomain3" width="400" height="315" src="https://www.youtube.com/embed/1UqzCP2xK9E" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <p class="entrevistas"><b>TITULO VIDEO</b></p>
+                <p class="diretor"><b>Diretor: </b>Christopher Nolan | <b> Estreia: </b>2008</p>
+            </div>
+            
+        
+            `;
+    }
+    texto += ` `
+    divEntrevistas.innerHTML = texto;
+}
+const xhrEnt = new XMLHttpRequest();
+xhrEnt.onload = exibeEntrevistas;
+xhrEnt.open(
+    "GET",
+    `    https://api.themoviedb.org/3/movie/550/videos?api_key=${API_KEY}&language=en-US`
+);
+xhrEnt.send();
+
+document.addEventListener("load", exibeEntrevistas);
