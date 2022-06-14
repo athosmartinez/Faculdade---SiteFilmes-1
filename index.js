@@ -5,8 +5,10 @@ function exibePopulares() {
     let texto = " ";
 
     let dados = JSON.parse(this.responseText);
+    console.log(dados);
     for (i = 0; i < 4; i++) {
         let populares = dados.results[i];
+        console.log(populares);
 
         texto =
             texto +
@@ -16,22 +18,22 @@ function exibePopulares() {
                 <img src="https://image.tmdb.org/t/p/w500/${populares.poster_path}" class="card-img-top">
                 <div class="card-body">
                     <p class="card-text1"><b>${populares.title}</b> <br> <b>Data de lançamento:</b> ${populares.release_date}<br> <b>Nº de votos:</b> ${populares.vote_count} - <b>Avaliação:</b> ${populares.vote_average}</p>
-                    <a href="detalhes+.html" id="btn-populares" class="btn btn-primary">Detalhes</a>
+                    <a href="detalhes+.html?id=${populares.id}" id="btn-populares" class="btn btn-primary">Detalhes</a>
                 </div>
             </div>
         </div>`;
     }
     divPopulares.innerHTML = texto;
 }
-let xhr = new XMLHttpRequest();
-xhr.onload = exibePopulares;
-xhr.open(
+const xhrPop = new XMLHttpRequest();
+xhrPop.onload = exibePopulares;
+xhrPop.open(
     "GET",
     `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`
 );
-xhr.send();
+xhrPop.send();
 
-addEventListener("load", exibePopulares);
+document.addEventListener("load", exibePopulares);
 
 
 function exibeCategorias() {
@@ -52,74 +54,72 @@ function exibeCategorias() {
             texto +
             `
             <option value="${categorias.id}">${categorias.name}</option>
-        
             `;
     }
     texto += `</select>`
     divCategorias.innerHTML = texto;
 }
 
-xhr.onload = exibeCategorias;
-xhr.open(
-    "GET",
-    `
-    https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}&language=en-US`
+const xhrCat = new XMLHttpRequest();
+xhrCat.onload = exibeCategorias;
+xhrCat.open(
+    "GET", `https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}&language=en-US`
 );
-xhr.send();
+xhrCat.send();
 
-addEventListener("load", exibeCategorias);
+document.addEventListener("load", exibeCategorias);
 
-function exibeNoticias() {
-    let divNoticias = document.getElementById("Noticia");
-    let texto = ` <div id="Noticias" class="container-fluid">
-    <div class="row">
-        <div class="col-12 col-xl-8">
-            <h1 class="titulo5">Novidades</h1>`;
+// function exibeNoticias() {
+//     let divNoticias = document.getElementById("Noticia");
+//     let texto = ` <div id="Noticias" class="container-fluid">
+//     <div class="row">
+//         <div class="col-12 col-xl-8">
+//             <h1 class="titulo5">Novidades</h1>`;
 
-    let dados = JSON.parse(this.responseText);
+//     let dados = JSON.parse(this.responseText);
 
-    console.log(dados);
+//     console.log(dados);
 
-    for (i = 0; i < dados.genres.length; i++) {
-        let noticias = dados.genres[i];
+//     for (i = 0; i < dados.genres.length; i++) {
+//         let noticias = dados.genres[i];
 
-        console.log(noticias);
+//         console.log(noticias);
 
-        texto =
-            texto +
-            `
-            <div class="d-md-flex">
-            <img class="imagensfinais" src="imgs/noticiabatman.jpg">
-            <a href="https://www.omelete.com.br/batman/danny-devito-collin-farrell-pinguim" style="text-decoration:none">
-                <h1 class="titulontfinal">Danny DeVito elogia Pinguim de Colin Farrell, mas prefere Batman de Tim Burton</h1>
-                <p class="paragrafontfinal">O astro Danny DeVito elogiou a atuação de Colin Farrell como Pinguim no Batman de Matt Reeves, mas disse que ainda prefere o filme de Tim Burton, Batman: O Retorno. "Sim eu fiz. Achei que Colin fez um ótimo trabalho”, disse
-                    DeVito ao The Wrap. “Certamente um meio diferente. Eu acho que foi um Batman mais ousado, sério e gângster. Você tira o chapéu para qualquer um que fica sentado na cadeira de maquiagem por tanto tempo. Eu fiz isso com
-                    o Pinguim e adorei.”
-                    <br>
-                    <br>
-                    <button type="button" class="rounded-pill btn btn-primary btn-sm">Filmes</button>
-                    <button type="button" class="rounded-pill btn btn-success btn-sm">Batman</button>
-                    <button type="button" class="rounded-pill btn btn-danger btn-sm">Elogio</button>
-                </p>
+//         texto =
+//             texto +
+//             `
+//             <div class="d-md-flex">
+//             <img class="imagensfinais" src="imgs/noticiabatman.jpg">
+//             <a href="https://www.omelete.com.br/batman/danny-devito-collin-farrell-pinguim" style="text-decoration:none">
+//                 <h1 class="titulontfinal"> DeVito elogia Pinguim de Colin Farrell, mas prefere Batman de Tim Burton</h1>
+//                 <p class="paragrafontfinal">O astro Danny DeVito elogiou a atuação de Colin Farrell como Pinguim no Batman de Matt Reeves, mas disse que ainda prefere o filme de Tim Burton, Batman: O Retorno. "Sim eu fiz. Achei que Colin fez um ótimo trabalho”, disse
+//                     DeVito ao The Wrap. “Certamente um meio diferente. Eu acho que foi um Batman mais ousado, sério e gângster. Você tira o chapéu para qualquer um que fica sentado na cadeira de maquiagem por tanto tempo. Eu fiz isso com
+//                     o Pinguim e adorei.”
+//                     <br>
+//                     <br>
+//                     <button type="button" class="rounded-pill btn btn-primary btn-sm">Filmes</button>
+//                     <button type="button" class="rounded-pill btn btn-success btn-sm">Batman</button>
+//                     <button type="button" class="rounded-pill btn btn-danger btn-sm">Elogio</button>
+//                 </p>
 
-            </a>
+//             </a>
 
-        </div>
-            `;
-    }
-    texto += ` `
-    divNoticias.innerHTML = texto;
-}
+//         </div>
+//             `;
+//     }
+//     texto += ` `
+//     divNoticias.innerHTML = texto;
+// }
+// const xhrNot = new XMLHttpRequest();
+// xhrNot.onload = exibeNoticias;
+// xhrNot.open(
+//     "GET",
+//     `
+//     https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}&language=en-US`
+// );
+// xhrNot.send();
 
-xhr.onload = exibeNoticias;
-xhr.open(
-    "GET",
-    `
-    https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}&language=en-US`
-);
-xhr.send();
-
-addEventListener("load", exibeNoticias);
+// document.addEventListener("load", exibeNoticias);
 
 function exibeAvaliacoes() {
     let divAvaliacoes = document.getElementById("Avaliacoes");
@@ -132,10 +132,8 @@ function exibeAvaliacoes() {
 
     console.log(dados);
 
-    for (i = 0; i < 3; i++) {
-        let avaliacoes = dados.genres[i];
-
-        console.log(avaliacoes);
+    for (i = 0; i < dados.results.length; i++) {
+        let avaliacoes = dados.results[i];
 
         texto =
             texto +
@@ -143,8 +141,8 @@ function exibeAvaliacoes() {
             <div class="card">
             <img class="card-img-top2" src="imgs/unnamed.png" alt="Imagem de capa do card">
             <div class="card-body">
-                <h5 class="card-title">A da Silva</h5>
-                <p class="card-text">O melhor filme da minha vida. Esse filme é ótimo, me filmagem e produção de um nível absurdo. Cada cena é de deixar de queixo caido, fomos eu e três amigos, todos nós adoramos.</p>
+                <h5 class="card-title">${avaliacoes.author}</h5>
+                <p class="card-text">${avaliacoes.content}</p>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-emoji-frown" viewBox="0 0 16 16">
                 <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
                 <path d="M4.285 12.433a.5.5 0 0 0 .683-.183A3.498 3.498 0 0 1 8 10.5c1.295 0 2.426.703 3.032 1.75a.5.5 0 0 0 .866-.5A4.498 4.498 0 0 0 8 9.5a4.5 4.5 0 0 0-3.898 2.25.5.5 0 0 0 .183.683zM7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5zm4 0c0 .828-.448 1.5-1 1.5s-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5z"/>
@@ -165,12 +163,12 @@ function exibeAvaliacoes() {
     texto += ` `
     divAvaliacoes.innerHTML = texto;
 }
-
-xhr.onload = exibeAvaliacoes;
-xhr.open(
+const xhrAva = new XMLHttpRequest();
+xhrAva.onload = exibeAvaliacoes;
+xhrAva.open(
     "GET",
-    `https://api.themoviedb.org/3/review/{review_id}?api_key=${API_KEY}`
+    `https://api.themoviedb.org/3/movie/338953/reviews?api_key=${API_KEY}`
 );
-xhr.send();
+xhrAva.send();
 
-addEventListener("load", exibeAvaliacoes);
+document.addEventListener("load", exibeAvaliacoes);
