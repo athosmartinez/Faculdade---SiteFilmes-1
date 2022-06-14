@@ -21,6 +21,10 @@
 
 /*MAIN1*/
 
+.overflow-auto {
+    max-height: 250px;
+}
+
 .textoPI {
     font-size: 18px;
 }
