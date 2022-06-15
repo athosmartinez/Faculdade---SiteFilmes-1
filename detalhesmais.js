@@ -1,7 +1,7 @@
 const API_KEY = "4fcc4590f648e11f5b9030e8b5746e6e";
 
 function exibeDetalhesP() {
-    let divDetalhes = document.getElementById("Detalhes+");
+    let divDetalhes = document.getElementById("Detalhesmais");
     let texto = " ";
 
     let dados = JSON.parse(this.responseText);
