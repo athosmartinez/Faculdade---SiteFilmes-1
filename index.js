@@ -8,75 +8,134 @@ const API_KEY = "4fcc4590f648e11f5b9030e8b5746e6e";
 //DIVISAO
 
 
-function exibeCarousel() {
-  let divCarousel = document.getElementById("carousel");
-  let texto = ` `;
+// function exibeCarousel() {
+//   let divCarousel = document.getElementById("carousel");
+//   let texto = ` `;
 
-  let dados = JSON.parse(this.responseText);
+//   let dados = JSON.parse(this.responseText);
 
-  for (i = 0; i < 4; i++) {
-    let carousel1 = dados.results[i]; 
-    if(carousel1.id != undefined){
-      xhrCar.open(
-        "GET",
-        `https://api.themoviedb.org/3/movie/${carousel1.id}/videos?api_key=${API_KEY}&language=pt-BR, false`
-      );
-      xhrCar.send();
-      console.log(xhrCar.responseText);
+//   for (i = 0; i < 4; i++) {
+//     let carousel1 = dados.results[i]; 
+//     if(carousel1.id != undefined){
+//       xhrCar.open(
+//         "GET",
+//         `https://api.themoviedb.org/3/movie/${carousel1.id}/videos?api_key=${API_KEY}&language=pt-BR, false`
+//       );
+//       xhrCar.send();
+//       console.log(xhrCar.responseText);
 
-      let dataVideos = JSON.parse(xhrCar.responseText);
-    }
+//       let dataVideos = JSON.parse(xhrCar.responseText);
+//     }
 
-    texto =
-      texto +
-      `
-            <div class="carousel-item ${i == 0 ? "active" : ""}">
-            <div class="row">
-                <div class="col-xl-6 col-md-12 col-lg-12">
-                    <iframe class="videomain1" width="830" height="330" src="https://www.youtube.com/embed/YA_T5kar83Q" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
+//     texto =
+//       texto +
+//       `
+//             <div class="carousel-item ${i == 0 ? "active" : ""}">
+//             <div class="row">
+//                 <div class="col-xl-6 col-md-12 col-lg-12">
+//                     <iframe class="videomain1" width="830" height="330" src="https://www.youtube.com/embed/YA_T5kar83Q" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+//                 </div>
 
-                <div id="textomain1" class="col-xl-6 col-md-12 col-lg-12">
-                    <h2>As aventuras de PI</h2>
-                    <div class="textoPI">
-                        <p><b>Sinopse:</b> Pi e sua família decidem ir para o Canadá depois de fechar o zoológico da família. A embarcação deles naufraga, e o jovem sobrevive junto com alguns animais, incluindo um temível tigre de Bengala, com
-                            o qual desenvolve uma ligação.</p>
-                        <p><b>Diretor:</b> Ang Lee | <b>Roteirista:</b> Yann Martel | <b>Estreia:</b> 2012</p>
+//                 <div id="textomain1" class="col-xl-6 col-md-12 col-lg-12">
+//                     <h2>As aventuras de PI</h2>
+//                     <div class="textoPI">
+//                         <p><b>Sinopse:</b> Pi e sua família decidem ir para o Canadá depois de fechar o zoológico da família. A embarcação deles naufraga, e o jovem sobrevive junto com alguns animais, incluindo um temível tigre de Bengala, com
+//                             o qual desenvolve uma ligação.</p>
+//                         <p><b>Diretor:</b> Ang Lee | <b>Roteirista:</b> Yann Martel | <b>Estreia:</b> 2012</p>
 
-                        <p><b>Elenco:</b> Suraj Sharma | Irrfan Khan | Tabu | Gautam Belur</p>
-                        <p><b> Se você já assistei deixe sua avaliação:</b></p>
-                    </div>
-                    <div class="estrelas">
-                        <input type="radio" id="cm_star-empty" name="fb" value="" checked/>
-                        <label for="cm_star-1"><i class="fa"></i></label>
-                        <input type="radio" id="cm_star-1" name="fb" value="1" />
-                        <label for="cm_star-2"><i class="fa"></i></label>
-                        <input type="radio" id="cm_star-2" name="fb" value="2" />
-                        <label for="cm_star-3"><i class="fa"></i></label>
-                        <input type="radio" id="cm_star-3" name="fb" value="3" />
-                        <label for="cm_star-4"><i class="fa"></i></label>
-                        <input type="radio" id="cm_star-4" name="fb" value="4" />
-                        <label for="cm_star-5"><i class="fa"></i></label>
-                        <input type="radio" id="cm_star-5" name="fb" value="5" />
-                    </div>
-                </div>
-            </div>
-        </div>
+//                         <p><b>Elenco:</b> Suraj Sharma | Irrfan Khan | Tabu | Gautam Belur</p>
+//                         <p><b> Se você já assistei deixe sua avaliação:</b></p>
+//                     </div>
+//                     <div class="estrelas">
+//                         <input type="radio" id="cm_star-empty" name="fb" value="" checked/>
+//                         <label for="cm_star-1"><i class="fa"></i></label>
+//                         <input type="radio" id="cm_star-1" name="fb" value="1" />
+//                         <label for="cm_star-2"><i class="fa"></i></label>
+//                         <input type="radio" id="cm_star-2" name="fb" value="2" />
+//                         <label for="cm_star-3"><i class="fa"></i></label>
+//                         <input type="radio" id="cm_star-3" name="fb" value="3" />
+//                         <label for="cm_star-4"><i class="fa"></i></label>
+//                         <input type="radio" id="cm_star-4" name="fb" value="4" />
+//                         <label for="cm_star-5"><i class="fa"></i></label>
+//                         <input type="radio" id="cm_star-5" name="fb" value="5" />
+//                     </div>
+//                 </div>
+//             </div>
+//         </div>
             
-           `;
-  }
-  texto += ` `;
-  divCarousel.innerHTML = texto;
-}
+//            `;
+//   }
+//   texto += ` `;
+//   divCarousel.innerHTML = texto;
+// }
+
 const xhrCar = new XMLHttpRequest();
-xhrCar.onload = exibeCarousel;
-xhrCar.open(
-  "GET",
-  `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=pt-BR&page=1`
-);
+xhrCar.onload = teste;
+xhrCar.open( "GET", `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=pt-BR&page=2`);
 xhrCar.send();
 
-document.addEventListener("load", exibeCarousel);
+async function teste() {
+  const dados = JSON.parse(this.responseText);
+  let divCarousel = document.getElementById("carousel");
+  
+  let i=0;
+  let texto = '';
+  while(i<3) {
+    const filme = dados.results[i];
+
+    const urlTrailer = await fetch(`https://api.themoviedb.org/3/movie/${filme.id}/videos?api_key=${API_KEY}&language=pt-BR`)
+    .then((body) => body.json()).then((data) => {  return 'https://www.youtube.com/embed/'+data.results[0].key; });
+
+    console.log(urlTrailer);
+
+    texto += `<div class='carousel-item `+ (i==0 ? 'active': '') + `>
+                <div class="row">
+                    <div class="col-xl-6 col-md-12 col-lg-12">
+                        <iframe class="videomain1" width="830" height="330"
+                            src="${urlTrailer}" title="YouTube video player"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                    </div>
+
+                    <div id="textomain1" class="col-xl-6 col-md-12 col-lg-12">
+                        <h2>${filme.title}</h2>
+                        <div class="textoPI">
+                            <p><b>Sinopse:</b>${filme.overview}.</p>
+                            <p><b>Diretor:</b> Ang Lee | <b>Roteirista:</b> Yann Martel | <b>Estreia:</b> ${filme.release_date}
+                            </p>
+
+                            <p><b>Elenco:</b> Suraj Sharma | Irrfan Khan | Tabu | Gautam Belur</p>
+                            <p><b> Se você já assistei deixe sua avaliação:</b></p>
+                        </div>
+                        <div class="estrelas">
+                            <input type="radio" id="cm_star-empty" name="fb" value="" checked />
+                            <label for="cm_star-1"><i class="fa"></i></label>
+                            <input type="radio" id="cm_star-1" name="fb" value="1" />
+                            <label for="cm_star-2"><i class="fa"></i></label>
+                            <input type="radio" id="cm_star-2" name="fb" value="2" />
+                            <label for="cm_star-3"><i class="fa"></i></label>
+                            <input type="radio" id="cm_star-3" name="fb" value="3" />
+                            <label for="cm_star-4"><i class="fa"></i></label>
+                            <input type="radio" id="cm_star-4" name="fb" value="4" />
+                            <label for="cm_star-5"><i class="fa"></i></label>
+                            <input type="radio" id="cm_star-5" name="fb" value="5" />
+                        </div>
+                    </div>
+                </div>
+            </div>`;
+    i++;
+  }
+  console.log(texto);
+
+  $('#carousel').append(texto);
+
+  // divCarousel.appendChild(texto);
+}
+
+
+
+
 
 //DIVISAO
 
